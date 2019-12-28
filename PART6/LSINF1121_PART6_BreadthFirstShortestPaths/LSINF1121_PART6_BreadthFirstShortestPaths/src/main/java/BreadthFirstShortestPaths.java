@@ -1,6 +1,3 @@
-//TODO Put your import here
-
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -26,32 +23,22 @@ public class BreadthFirstShortestPaths {
 
     // Breadth-first search from multiple sources
     private void bfs(Graph G, Iterable<Integer> sources) {
-        Iterator<Integer> iter = sources.iterator();
-        while(iter.hasNext())
-        {
-            Integer s = iter.next();
-            Queue<Integer> queue = new LinkedList<Integer>(); //LINKEDLIST!!
-            marked[s] = true;
-            queue.add(s);
-            distTo[s]=0;
-
+            Queue<Integer> queue = new LinkedList<Integer>();
+            for (Integer source : sources){
+                distTo[source] = 0;
+                marked[source] = true;
+                queue.add(source);
+            }
             while(!queue.isEmpty()){
-                int v = queue.remove();
-                for(int w:G.adj(v)){
-
-                    if(!marked[w]){
-                        if(distTo[w] > distTo[v]+1){
-                        distTo[w]=distTo[v]+1;}
-                        marked[w] = true;
+                Integer v = queue.remove();
+                for (Integer w : G.adj(v)) {
+                    if (!marked[w]) {
+                        if(distTo[w] > distTo[v]+1) {distTo[w] = distTo[v]+1;}
+                        marked[w]=true;
                         queue.add(w);
                     }
-
                 }
             }
-
-
-        }
-
     }
 
     /**
