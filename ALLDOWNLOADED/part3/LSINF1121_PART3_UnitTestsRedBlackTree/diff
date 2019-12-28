@@ -1,0 +1,348 @@
+ import java.util.NoSuchElementException;		      <
+// trouver l'erreur dans cette classe! c'est pas celle qu'on  |	import java.util.NoSuchElementException;								
+							      >									
+    private Node root;             // root of BST	      <
+							      >	    private Node root;     // root of the BST								
+							      >									
+							      >	    // BST helper node data type								
+        private Key key;           // sorted by key	      |	        private Key key;           // key								
+        private Node left, right;  // left and right subtrees |	        private Node left, right;  // links to left and right								
+        private int size;          // number of nodes in subt |	        private boolean color;     // color of parent link								
+							      >	        private int size;          // subtree count								
+        public Node(Key key, Value val, int size) {	      |	        public Node(Key key, Value val, boolean color, int si								
+							      >	            this.color = color;								
+    /**							      |	    /********************************************************								
+     * Returns true if this symbol table is empty.	      |	     *  Node helper methods.								
+     *							      |	     ********************************************************								
+     * @return {@code true} if this symbol table is empty; {@ |	    // is node x red; false if x is null ?								
+     */							      |	    private boolean isRed(Node x) {								
+    public boolean isEmpty() {				      |	        if (x == null) return false;								
+        return size() == 0;				      |	        return x.color == RED;								
+							      >	    // number of node in subtree rooted at x; 0 if x is null								
+							      >	    private int size(Node x) {								
+							      >	        if (x == null) return 0;								
+							      >	        return x.size;								
+							      >	    }								
+							      >									
+							      >									
+     *							      <
+    // return number of key-value pairs in BST rooted at x    <
+    private int size(Node x) {				      <
+        if (x == null) return 0;			      <
+        else return x.size;				      <
+    }							      <
+							      <
+     * Does this symbol table contain the given key?	      |	     * Is this symbol table empty?								
+     *							      |	     * @return {@code true} if this symbol table is empty and								
+     * @param key the key				      <
+     * @return {@code true} if this symbol table contains {@c <
+     * {@code false} otherwise				      <
+     * @throws IllegalArgumentException if {@code key} is {@c <
+    public boolean contains(Key key) {			      |	    public boolean isEmpty() {								
+        if (key == null) throw new IllegalArgumentException(" |	        return root == null;								
+        return get(key) != null;			      <
+							      >									
+							      >	    /********************************************************								
+							      >	     *  Standard BST search.								
+							      >	     ********************************************************								
+							      >									
+     *							      <
+							      >	        if (key == null) throw new IllegalArgumentException("								
+							      >	    // value associated with the given key in subtree rooted 								
+        if (key == null) throw new IllegalArgumentException(" |	        while (x != null) {								
+        if (x == null) return null;			      <
+        if (cmp < 0) return get(x.left, key);		      |	            if      (cmp < 0) x = x.left;								
+        else if (cmp > 0) return get(x.right, key);	      |	            else if (cmp > 0) x = x.right;								
+							      >	        return null;								
+							      >	    }								
+							      >									
+							      >	    /**								
+							      >	     * Does this symbol table contain the given key?								
+							      >	     * @param key the key								
+							      >	     * @return {@code true} if this symbol table contains {@c								
+							      >	     *     {@code false} otherwise								
+							      >	     * @throws IllegalArgumentException if {@code key} is {@c								
+							      >	     */								
+							      >	    public boolean contains(Key key) {								
+							      >	        return get(key) != null;								
+							      >	    }								
+							      >									
+							      >	    /********************************************************								
+							      >	     *  Red-black tree insertion.								
+							      >	     ********************************************************								
+        if (key == null) throw new IllegalArgumentException(" |	        if (key == null) throw new IllegalArgumentException("								
+							      >									
+							      >	        root.color = BLACK;								
+							      >	        // assert check();								
+    private Node put(Node x, Key key, Value val) {	      |	    // insert the key-value pair in the subtree rooted at h								
+        if (x == null) return new Node(key, val, 1);	      |	    private Node put(Node h, Key key, Value val) {								
+        int cmp = key.compareTo(x.key);			      |	        if (h == null) return new Node(key, val, RED, 1);								
+        if (cmp < 0) x.left = put(x.left, key, val);	      |									
+        else if (cmp > 0) x.right = put(x.right, key, val);   |	        int cmp = key.compareTo(h.key);								
+        else x.val = val;				      |	        if      (cmp < 0) h.left  = put(h.left,  key, val);								
+        x.size = 1 + size(x.left) + size(x.right);	      |	        else if (cmp > 0) h.right = put(h.right, key, val);								
+        return x;					      |	        else              h.val   = val;								
+							      >									
+							      >	        // fix-up any right-leaning links								
+							      >	        if (isRed(h.right) && !isRed(h.left))      h = rotate								
+							      >	        if (isRed(h.left)  &&  isRed(h.left.left)) h = rotate								
+							      >	        if (isRed(h.left)  &&  isRed(h.right))     flipColors								
+							      >	        h.size = size(h.left) + size(h.right) + 1;								
+							      >									
+							      >	        return h;								
+							      >	    /********************************************************								
+							      >	     *  Red-black tree deletion.								
+							      >	     ********************************************************								
+     *							      <
+        if (isEmpty()) throw new NoSuchElementException("Symb |	        if (isEmpty()) throw new NoSuchElementException("BST 								
+							      >									
+							      >	        // if both children of root are black, set root to re								
+							      >	        if (!isRed(root.left) && !isRed(root.right))								
+							      >	            root.color = RED;								
+							      >									
+							      >	        if (!isEmpty()) root.color = BLACK;								
+							      >	        // assert check();								
+    private Node deleteMin(Node x) {			      |	    // delete the key-value pair with the minimum key rooted 								
+        if (x.left == null) return x.right;		      |	    private Node deleteMin(Node h) {								
+        x.left = deleteMin(x.left);			      |	        if (h.left == null)								
+        x.size = size(x.left) + size(x.right) + 1;	      |	            return null;								
+        return x;					      |									
+							      >	        if (!isRed(h.left) && !isRed(h.left.left))								
+							      >	            h = moveRedLeft(h);								
+							      >									
+							      >	        h.left = deleteMin(h.left);								
+							      >	        return balance(h);								
+							      >									
+     *							      <
+        if (isEmpty()) throw new NoSuchElementException("Symb |	        if (isEmpty()) throw new NoSuchElementException("BST 								
+							      >									
+							      >	        // if both children of root are black, set root to re								
+							      >	        if (!isRed(root.left) && !isRed(root.right))								
+							      >	            root.color = RED;								
+							      >									
+							      >	        if (!isEmpty()) root.color = BLACK;								
+							      >	        // assert check();								
+    private Node deleteMax(Node x) {			      |	    // delete the key-value pair with the maximum key rooted 								
+        if (x.right == null) return x.left;		      |	    private Node deleteMax(Node h) {								
+        x.right = deleteMax(x.right);			      |	        if (isRed(h.left))								
+        x.size = size(x.left) + size(x.right) + 1;	      |	            h = rotateRight(h);								
+        return x;					      |									
+							      >	        if (h.right == null)								
+							      >	            return null;								
+							      >									
+							      >	        if (!isRed(h.right) && !isRed(h.right.left))								
+							      >	            h = moveRedRight(h);								
+							      >									
+							      >	        h.right = deleteMax(h.right);								
+							      >									
+							      >	        return balance(h);								
+        if (key == null) throw new IllegalArgumentException(" |	        if (key == null) throw new IllegalArgumentException("								
+							      >	        if (!contains(key)) return;								
+							      >									
+							      >	        // if both children of root are black, set root to re								
+							      >	        if (!isRed(root.left) && !isRed(root.right))								
+							      >	            root.color = RED;								
+							      >									
+							      >	        if (!isEmpty()) root.color = BLACK;								
+							      >	        // assert check();								
+    private Node delete(Node x, Key key) {		      |	    // delete the key-value pair with the given key rooted at								
+        if (x == null) return null;			      |	    private Node delete(Node h, Key key) {								
+							      >	        // assert get(h, key) != null;								
+        int cmp = key.compareTo(x.key);			      |	        if (key.compareTo(h.key) < 0)  {								
+        if (cmp < 0) x.left = delete(x.left, key);	      |	            if (!isRed(h.left) && !isRed(h.left.left))								
+        else if (cmp > 0) x.right = delete(x.right, key);     |	                h = moveRedLeft(h);								
+							      >	            h.left = delete(h.left, key);								
+							      >	        }								
+            if (x.right == null) return x.left;		      |	            if (isRed(h.left))								
+            if (x.left == null) return x.right;		      |	                h = rotateRight(h);								
+            Node t = x;					      |	            if (key.compareTo(h.key) == 0 && (h.right == null								
+            x = min(t.right);				      |	                return null;								
+            x.right = deleteMin(t.right);		      |	            if (!isRed(h.right) && !isRed(h.right.left))								
+            x.left = t.left;				      |	                h = moveRedRight(h);								
+							      >	            if (key.compareTo(h.key) == 0) {								
+							      >	                Node x = min(h.right);								
+							      >	                h.key = x.key;								
+							      >	                h.val = x.val;								
+							      >	                // h.val = get(h.right, min(h.right).key);								
+							      >	                // h.key = min(h.right).key;								
+							      >	                h.right = deleteMin(h.right);								
+        x.size = size(x.left) + size(x.right) + 1;	      |	            else h.right = delete(h.right, key);								
+							      >	        }								
+							      >	        return balance(h);								
+							      >	    }								
+							      >									
+							      >	    /********************************************************								
+							      >	     *  Red-black tree helper functions.								
+							      >	     ********************************************************								
+							      >									
+							      >	    // make a left-leaning link lean to the right								
+							      >	    private Node rotateRight(Node h) {								
+							      >	        // assert (h != null) && isRed(h.left);								
+							      >	        Node x = h.left;								
+							      >	        h.left = x.right;								
+							      >	        x.right = h;								
+							      >	        x.color = x.right.color;								
+							      >	        x.right.color = RED;								
+							      >	        x.size = h.size;								
+							      >	        h.size = size(h.left) + size(h.right) + 1;								
+							      >	        return x;								
+							      >	    }								
+							      >									
+							      >	    // make a right-leaning link lean to the left								
+							      >	    private Node rotateLeft(Node h) {								
+							      >	        // assert (h != null) && isRed(h.right);								
+							      >	        Node x = h.right;								
+							      >	        h.right = x.left;								
+							      >	        x.left = h;								
+							      >	        x.color = x.left.color;								
+							      >	        x.left.color = RED;								
+							      >	        x.size = h.size;								
+							      >	        h.size = size(h.left) + size(h.right) + 1;								
+							      >	    // flip the colors of a node and its two children								
+							      >	    private void flipColors(Node h) {								
+							      >	        // h must have opposite color of its two children								
+							      >	        // assert (h != null) && (h.left != null) && (h.right								
+							      >	        // assert (!isRed(h) &&  isRed(h.left) &&  isRed(h.ri								
+							      >	        //    || (isRed(h)  && !isRed(h.left) && !isRed(h.rig								
+							      >	        h.color = !h.color;								
+							      >	        h.left.color = !h.left.color;								
+							      >	        h.right.color = !h.right.color;								
+							      >	    }								
+							      >									
+							      >	    // Assuming that h is red and both h.left and h.left.left								
+							      >	    // are black, make h.left or one of its children red.								
+							      >	    private Node moveRedLeft(Node h) {								
+							      >	        // assert (h != null);								
+							      >	        // assert isRed(h) && !isRed(h.left) && !isRed(h.left								
+							      >									
+							      >	        flipColors(h);								
+							      >	        if (isRed(h.right.left)) {								
+							      >	            h.right = rotateRight(h.right);								
+							      >	            h = rotateLeft(h);								
+							      >	            flipColors(h);								
+							      >	        }								
+							      >	        return h;								
+							      >	    }								
+							      >									
+							      >	    // Assuming that h is red and both h.right and h.right.le								
+							      >	    // are black, make h.right or one of its children red.								
+							      >	    private Node moveRedRight(Node h) {								
+							      >	        // assert (h != null);								
+							      >	        // assert isRed(h) && !isRed(h.right) && !isRed(h.rig								
+							      >	        flipColors(h);								
+							      >	        if (isRed(h.left.left)) {								
+							      >	            h = rotateRight(h);								
+							      >	            flipColors(h);								
+							      >	        }								
+							      >	        return h;								
+							      >	    }								
+							      >									
+							      >	    // restore red-black tree invariant								
+							      >	    private Node balance(Node h) {								
+							      >	        // assert (h != null);								
+							      >									
+							      >	        if (isRed(h.right))                      h = rotateLe								
+							      >	        if (isRed(h.left) && isRed(h.left.left)) h = rotateRi								
+							      >	        if (isRed(h.left) && isRed(h.right))     flipColors(h								
+							      >									
+							      >	        h.size = size(h.left) + size(h.right) + 1;								
+							      >	        return h;								
+							      >	    }								
+							      >									
+							      >									
+							      >	    /********************************************************								
+							      >	     *  Utility functions.								
+							      >	     ********************************************************								
+							      >									
+							      >	    /**								
+							      >	     * Returns the height of the BST (for debugging).								
+							      >	     * @return the height of the BST (a 1-node tree has heigh								
+							      >	     */								
+							      >	    public int height() {								
+							      >	        return height(root);								
+							      >	    }								
+							      >	    private int height(Node x) {								
+							      >	        if (x == null) return -1;								
+							      >	        return 1 + Math.max(height(x.left), height(x.right));								
+							      >	    }								
+							      >									
+							      >	    /********************************************************								
+							      >	     *  Ordered symbol table methods.								
+							      >	     ********************************************************								
+     *							      <
+							      >	    // the smallest key in subtree rooted at x; null if no su								
+							      >	        // assert x != null;								
+     *							      <
+							      >	    // the largest key in the subtree rooted at x; null if no								
+							      >	        // assert x != null;								
+							      >									
+     *							      <
+							      >	    // the largest key in the subtree rooted at x less than o								
+    public Key floor2(Key key) {			      <
+        return floor2(root, key, null);			      <
+    }							      <
+							      <
+    private Key floor2(Node x, Key key, Key best) {	      <
+        if (x == null) return best;			      <
+        int cmp = key.compareTo(x.key);			      <
+        if (cmp < 0) return floor2(x.left, key, best);	      <
+        else if (cmp > 0) return floor2(x.right, key, x.key); <
+        else return x.key;				      <
+    }							      <
+							      <
+     *							      <
+							      >	    // the smallest key in the subtree rooted at x greater th								
+        if (cmp < 0) {					      |	        if (cmp > 0)  return ceiling(x.right, key);								
+        return ceiling(x.right, key);			      <
+    }							      <
+    // Return key of rank k.				      |	    // the key of rank k in the subtree rooted at x								
+        if (x == null) return null;			      |	        // assert x != null;								
+							      >	        // assert k >= 0 && k < size(x);								
+     *							      <
+    // Number of keys in the subtree less than key.	      |	    // number of keys less than key in the subtree rooted at 								
+							      >	    /********************************************************								
+							      >	     *  Range count and range search.								
+							      >	     ********************************************************								
+							      >									
+     *							      |	     * @return all keys in the symbol table as an {@code Iter								
+     * @return all keys in the symbol table		      <
+        if (isEmpty()) return new LinkedList<>();	      |	        if (isEmpty()) return new LinkedList<Key>();								
+     * @return all keys in the symbol table between {@code lo |	     * @return all keys in the sybol table between {@code lo}								
+     * (inclusive) and {@code hi} (inclusive)		      |	     *    (inclusive) and {@code hi} (inclusive) as an {@code								
+							      >	        // if (isEmpty() || lo.compareTo(hi) > 0) return queu								
+							      >	    // add the keys between lo and hi in the subtree rooted a								
+							      >	    // to the queue								
+     * @return the number of keys in the symbol table between |	     * @return the number of keys in the sybol table between 								
+							      <
+    /**							      <
+     * Returns the height of the BST (for debugging).	      <
+     *							      <
+     * @return the height of the BST (a 1-node tree has heigh <
+     */							      <
+    public int height() {				      <
+        return height(root);				      <
+    }							      <
+							      <
+    private int height(Node x) {			      <
+        if (x == null) return -1;			      <
+        return 1 + Math.max(height(x.left), height(x.right)); <
+    }							      <
+							      <
+    /**							      <
+     * Returns the keys in the BST in level order (for debugg <
+     *							      <
+     * @return the keys in the BST in level order traversal   <
+     */							      <
+    public Iterable<Key> levelOrder() {			      <
+        Queue<Key> keys = new LinkedList<Key>();	      <
+        Queue<Node> queue = new LinkedList<Node>();	      <
+        queue.remove(root);				      <
+        while (!queue.isEmpty()) {			      <
+            Node x = queue.poll();			      <
+            if (x == null) continue;			      <
+            keys.remove(x.key);				      <
+            queue.remove(x.left);			      <
+            queue.remove(x.right);			      <
+        }						      <
+        return keys;					      <
+    }							      <
