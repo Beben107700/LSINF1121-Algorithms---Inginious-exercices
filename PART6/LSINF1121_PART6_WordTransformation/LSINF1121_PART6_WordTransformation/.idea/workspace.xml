@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7d3929a0-77c6-47dd-89f7-074804cac943" name="Default Changelist" comment="J'ai ma remorque pour le B+E!">
+      <change afterPath="$PROJECT_DIR$/../../LSINF1121_PART6_WordTransformation.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LSINF1121_PART6_WordTransformation.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/JavaGrading-0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/hamcrest-core-1.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/junit-4.12.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/WordTransformationSP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Helpers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/WTSPComplexityTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/WTSPCorrectnessTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/WTSPStaticTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/Helpers.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/WTSPComplexityTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/WTSPCorrectnessTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/WTSPStaticTests$Instance.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/WTSPStaticTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/._LSINF1121_PART6_WordTransformation" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/._.idea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/._libs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/._pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/._src" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/.idea/._misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/.idea/._uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/libs/._JavaGrading-0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/libs/._hamcrest-core-1.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/libs/._junit-4.12.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/src/._main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/src/._test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/src/main/._java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/src/main/._resources" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../__MACOSX/LSINF1121_PART6_WordTransformation/src/test/._java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="ProjectId" id="1VbyN0zB1OmwdAZIdotPo2kKgZ9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
+      <module name="LSINF1121_PART6_WordTransformation" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="directory" />
+      <option name="PARAMETERS" value="" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7d3929a0-77c6-47dd-89f7-074804cac943" name="Default Changelist" comment="" />
+      <created>1577536045810</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1577536045810</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="J'ai ma remorque pour le B+E!" />
+    <option name="LAST_COMMIT_MESSAGE" value="J'ai ma remorque pour le B+E!" />
+  </component>
+</project>
